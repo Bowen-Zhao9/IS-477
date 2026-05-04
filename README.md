@@ -117,6 +117,26 @@ In the final stages, we audited the merged dataset for remaining nulls. We used 
 
 
 ## Findings: [~500 words] Description of any findings including numeric results and/or visualizations.
+Our final results for the project includes a OLS analysis report and a stock price vs. new confirmed cases comparison graph for the three companies. 
+### OLS Regression Results
+ 
+We constructed three OLS regression models using daily stock returns as the dependent variable and three pandemic-related metrics as independent variables: `Severity_Index`, `Infection_Momentum`, and `Mortality_Momentum`. The results across all three companies reveal that COVID-19 metrics have very limited explanatory power on daily stock returns.
+ 
+- **CVS**: The model produced an R-squared of 0.000 with an F-statistic p-value of 0.994, indicating no statistically significant relationship between pandemic severity and daily returns.
+- **JNJ**: The model performed slightly better with an R-squared of 0.030, and `Infection_Momentum` showed marginal significance (p = 0.073), suggesting that short-term surges in infection may have a weak positive association with JNJ returns.
+- **ABBV**: The model yielded an R-squared of 0.014, with `Mortality_Momentum` showing borderline significance (p = 0.081) and a negative coefficient (-0.0030), implying that rising death tolls may slightly suppress ABBV returns.
+Across all three models, none of the coefficients reached the conventional 5% significance threshold, suggesting that daily pandemic metrics alone are insufficient to predict pharmaceutical stock returns.
+ 
+### Visual Analysis
+ 
+The dual-axis time series plots reveal interesting patterns that complement the regression findings:
+ 
+- **CVS** stock price exhibited a strong upward trend throughout 2021, rising from approximately $59 in January to nearly $90 by year-end, with the most pronounced acceleration occurring during the Delta and Omicron surges in late 2021.
+- **JNJ** displayed more volatile behavior, peaking around $157 mid-year before declining and recovering, suggesting that JNJ was more sensitive to vaccine-related news cycles given its role as a vaccine manufacturer.
+- **ABBV** showed steady appreciation from $86 to $115, with a notable jump coinciding with the Omicron wave in December 2021.
+### Interpretation
+ 
+The divergence between weak statistical significance and visually apparent co-movement suggests that while pharmaceutical stocks broadly benefited during the pandemic period, daily fluctuations in COVID metrics do not directly drive daily returns. Instead, longer-term trends, investor expectations about vaccine demand, and broader market conditions likely play more substantial roles. The high kurtosis values (5.484 for CVS and 8.928 for ABBV) and significant Jarque-Bera statistics indicate non-normal return distributions with fat tails, which is consistent with the heightened market volatility characteristic of the pandemic era.
 
 
 
@@ -162,6 +182,20 @@ Future Direction: Future iterations should include macroeconomic indicators (suc
 
 
 ## References: Formatted citations for any papers, datasets, or software used in your project.
-
+### Data Sources
+ 
+Dong, E., Du, H., & Gardner, L. (2020). An interactive web-based dashboard to track COVID-19 in real time. *The Lancet Infectious Diseases*, *20*(5), 533–534. https://doi.org/10.1016/S1473-3099(20)30120-1
+ 
+Johns Hopkins University Center for Systems Science and Engineering. (2023). *COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University* [Data set]. GitHub. https://github.com/CSSEGISandData/COVID-19
+ 
+Aroussi, R. (2024). *yfinance: Download market data from Yahoo! Finance's API* (Version 0.2) [Computer software]. GitHub. https://github.com/ranaroussi/yfinance
+ 
+---
+ 
+### Notes on Data Use
+ 
+The JHU CSSE COVID-19 dataset is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. As required by the data provider, we attribute the data to the "COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University" and cite the accompanying *Lancet Infectious Diseases* publication by Dong, Du, and Gardner (2020).
+ 
+The yfinance library is distributed under the Apache Software License 2.0 and is an open-source tool that accesses Yahoo! Finance's publicly available APIs. yfinance is not affiliated with, endorsed by, or vetted by Yahoo, Inc., and is intended for research and educational purposes only.
 
 
