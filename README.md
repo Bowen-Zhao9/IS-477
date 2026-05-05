@@ -1,4 +1,4 @@
-# Title: COVID-19 and Health Firm Stock Price
+# How pandemic severity relates to market performance: the relationship between COVID severity and stock prices of pharmaceutical companies
 
 
 ## Contributors: 
